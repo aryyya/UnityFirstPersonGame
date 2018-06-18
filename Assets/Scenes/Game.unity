@@ -656,8 +656,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSensitivity: 3
   verticalSensitivity: 3
-  minimumVerticalAngle: -45
-  maximumVerticalAngle: 45
+  minimumVerticalAngle: -60
+  maximumVerticalAngle: 60
   axes: 1
 --- !u!1 &531775391
 GameObject:

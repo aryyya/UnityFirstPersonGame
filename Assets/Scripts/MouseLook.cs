@@ -13,20 +13,17 @@ public class MouseLook : MonoBehaviour
     private float _rotationX = 0.0f;
     private float _rotationY = 0.0f;
 
-    public enum RotationAxis
-    {
-        MouseXAndY = 0,
-        MouseX = 1,
-        MouseY = 2
-    }
-
-    public RotationAxis axes = RotationAxis.MouseXAndY;
-
     void Start()
     {
+        Rigidbody body = GetComponent<Rigidbody>();
+        if (body != null)
+        {
+            body.freezeRotation = true;
+        }
+
         _rotationX = transform.localEulerAngles.x;
         _rotationY = transform.localEulerAngles.y;
-}
+    }
 
     void Update()
     {
