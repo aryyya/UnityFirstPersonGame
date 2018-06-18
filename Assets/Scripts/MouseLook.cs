@@ -24,7 +24,9 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
-    }
+        _rotationX = transform.localEulerAngles.x;
+        _rotationY = transform.localEulerAngles.y;
+}
 
     void Update()
     {
