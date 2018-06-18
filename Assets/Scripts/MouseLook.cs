@@ -7,8 +7,8 @@ public class MouseLook : MonoBehaviour
     public float horizontalSensitivity = 3.0f;
     public float verticalSensitivity = 3.0f;
 
-    public float minimumVerticalAngle = -45.0f;
-    public float maximumVerticalAngle = +45.0f;
+    public float minimumVerticalAngle = -60.0f;
+    public float maximumVerticalAngle = +60.0f;
 
     private float _rotationX = 0.0f;
     private float _rotationY = 0.0f;
@@ -30,9 +30,14 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        _rotationX -= Input.GetAxis("Mouse Y") * verticalSensitivity;
-        _rotationY += Input.GetAxis("Mouse X") * horizontalSensitivity;
+        float deltaX = Input.GetAxis("Mouse Y") * verticalSensitivity;
+        float deltaY = Input.GetAxis("Mouse X") * horizontalSensitivity;
+
+        _rotationX -= deltaX;
+        _rotationY += deltaY;
+
         _rotationX = Mathf.Clamp(_rotationX, minimumVerticalAngle, maximumVerticalAngle);
+
         transform.localEulerAngles = new Vector3(_rotationX, _rotationY);
     }
 }
