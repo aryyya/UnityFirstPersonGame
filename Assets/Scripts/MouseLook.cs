@@ -13,6 +13,15 @@ public class MouseLook : MonoBehaviour
     private float _rotationX = 0.0f;
     private float _rotationY = 0.0f;
 
+    public enum RotationAxis
+    {
+        MouseXAndY = 0,
+        MouseX = 1,
+        MouseY = 2
+    }
+
+    public RotationAxis axes = RotationAxis.MouseXAndY;
+
     void Start()
     {
         Rigidbody body = GetComponent<Rigidbody>();
@@ -29,14 +38,39 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        float deltaX = Input.GetAxis("Mouse Y") * verticalSensitivity;
-        float deltaY = Input.GetAxis("Mouse X") * horizontalSensitivity;
-
-        _rotationX -= deltaX;
-        _rotationY += deltaY;
-
-        _rotationX = Mathf.Clamp(_rotationX, minimumVerticalAngle, maximumVerticalAngle);
+        if (axes == RotationAxis.MouseXAndY)
+        {
+            SetRotationXAndY();
+        }
+        else if (axes == RotationAxis.MouseX)
+        {
+            SetRotationX();
+        }
+        else if (axes == RotationAxis.MouseY)
+        {
+            SetRotationY();
+        }
 
         transform.localEulerAngles = new Vector3(_rotationX, _rotationY);
+    }
+
+
+    private void SetRotationXAndY()
+    {
+        SetRotationX();
+        SetRotationY();
+    }
+
+    private void SetRotationX()
+    {
+        float deltaX = Input.GetAxis("Mouse Y") * verticalSensitivity;
+        _rotationX -= deltaX;
+        _rotationX = Mathf.Clamp(_rotationX, minimumVerticalAngle, maximumVerticalAngle);
+    }
+
+    private void SetRotationY()
+    {
+        float deltaY = Input.GetAxis("Mouse X") * horizontalSensitivity;
+        _rotationY += deltaY;
     }
 }
