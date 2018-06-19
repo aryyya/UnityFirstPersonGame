@@ -21,6 +21,8 @@ public class MouseLook : MonoBehaviour
             body.freezeRotation = true;
         }
 
+        Cursor.visible = false;
+
         _rotationX = transform.localEulerAngles.x;
         _rotationY = transform.localEulerAngles.y;
     }
