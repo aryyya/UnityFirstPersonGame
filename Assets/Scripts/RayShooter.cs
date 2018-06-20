@@ -52,9 +52,9 @@ public class RayShooter : MonoBehaviour
 
     void OnGUI()
     {
-        int size = 100;
+        int size = 12;
         float positionX = _camera.pixelWidth / 2;
         float positionY = _camera.pixelHeight / 2;
-        GUI.Label(new Rect(positionX, positionY, size, size), "X");
+        GUI.Label(new Rect(positionX, positionY, size, size), "x");
     }
 }
