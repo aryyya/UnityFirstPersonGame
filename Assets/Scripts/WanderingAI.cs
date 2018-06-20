@@ -7,11 +7,27 @@ public class WanderingAI : MonoBehaviour
     public float speed = 3.0f;
     public float obstacleRange = 5.0f;
 
+    private bool _alive;
+
     void Start()
     {
+        _alive = true;
     }
 
     void Update()
+    {
+        if (_alive)
+        {
+            Wander();
+        }
+    }
+
+    public void SetAlive(bool alive)
+    {
+        _alive = alive;
+    }
+
+    private void Wander()
     {
         transform.Translate(0, 0, speed * Time.deltaTime);
 

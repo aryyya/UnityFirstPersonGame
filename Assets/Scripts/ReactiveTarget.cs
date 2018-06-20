@@ -16,6 +16,9 @@ public class ReactiveTarget : MonoBehaviour
 
     public void ReactToHit()
     {
+        var wanderingAI = gameObject.GetComponent<WanderingAI>();
+        if (wanderingAI) wanderingAI.SetAlive(false);
+
         StartCoroutine(Die());
     }
 
