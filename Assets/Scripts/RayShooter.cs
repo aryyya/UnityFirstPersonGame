@@ -9,6 +9,9 @@ public class RayShooter : MonoBehaviour
     void Start()
     {
         _camera = GetComponent<Camera>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -34,5 +37,13 @@ public class RayShooter : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         Destroy(sphere);
+    }
+
+    void OnGUI()
+    {
+        int size = 100;
+        float positionX = _camera.pixelWidth / 2;
+        float positionY = _camera.pixelHeight / 2;
+        GUI.Label(new Rect(positionX, positionY, size, size), "X");
     }
 }
